@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div>
+{% if request.user.is_superuser %}
+  <a href="{% url 'cars:create' %}"
+  class="btn btn-outline-secondary btn-lg btn-block">
+    <i class = "fa fa-edit"></i>Create
+  </a>
+{% endif %}
   <div class="row">
   {% for car in cars %}
   <div>
@@ -8,4 +15,5 @@
   </div>
   {% endfor %}
   </div>
+</div>
 {% endblock %}

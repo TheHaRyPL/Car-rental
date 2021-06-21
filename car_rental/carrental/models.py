@@ -16,6 +16,7 @@ class Cars(models.Model):
     mark = models.TextField(verbose_name=_("Mark"), null=True, blank=True)
     power = models.TextField(verbose_name=_("Power"), null=True, blank=True)
     type = models.TextField(verbose_name=_("Type"), null=True, blank=True)
+    price = models.TextField(verbose_name=_("Price"), null=True, blank=True)
     picture = models.URLField(verbose_name=_("Picture"), null=True, blank=True)
 
     def save(self, *args, **kwargs):

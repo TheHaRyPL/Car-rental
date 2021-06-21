@@ -1,9 +1,10 @@
-<div class="card mb-4 box-shadow">
+<a href="{{ car.get_absolute_url }}">
+<div class="card mb-4 box-shadow" style="margin: 20px;">
 <img
     class="card-img-top"
     src="{{ car.picture }}"
     alt="Thumbnail [100%x225]"
-    style="height: 225px; width: 100%; display: block;">
+    style="height: 350px; width: 500px; display: block;">
   <div class="card-body">
     <p class="card-title text-center"> {{ car.title }}
   </div>
