@@ -87,7 +87,7 @@ class Reservation(models.Model):
         return reverse("cars:reservation_list")
 
     def __str__(self):
-        return self.cars.title + ": " + self.user.username
+        return self.cars.title
 
 class Rental(models.Model):
     """Rental model class"""

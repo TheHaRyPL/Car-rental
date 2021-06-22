@@ -26,9 +26,7 @@
 {% endif %}
   </div>
 <div class="card-body text-center">
-    <h4 class="card-title">{{ reservation.cars }} </h4>
-    <h5><b>User: </b> {{ reservation.user }}</h5>
-    <h5><b>Start: </b> {{ reservation.start_time_booking }}</h5>
+    <h2 class="card-title" style="color: goldenrod; font-family:'Berlin Sans FB'; ">{{ reservation.cars }} </h2>
     <h5><b>End: </b> {{ reservation.end_time_booking }}</h5>
     Active:
       {% if reservation.is_active %}

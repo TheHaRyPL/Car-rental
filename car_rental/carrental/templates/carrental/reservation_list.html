@@ -1,33 +1,24 @@
 {% extends "base.html"%}
 
 {% block content %}
-  <div><h2>RESERVATIONS: </h2></div>
+</div>
+  <div class="card text-white bg-secondary mb-3" style="max-width: 40rem; margin-left: 600px;">
+  <div class="card-header"> <h3>Reservations:</h3>
+  <div class="card-body text-dark">
   <div class="row">
-{% for reservation in reservations %}
-{% if request.user == reservation.user %}
-{% if reservation.is_active %}
-  <div class = "col-md-4">
-    <div class="card-group">
-      {% include "carrental/reservation_frame.html" with reservation=reservation %}
-    </div>
-
-  </div>
+    {% for reservation in reservations %}
+    {% if request.user == reservation.user %}
+    {% if reservation.is_active %}
+      <div>
+        <div class="card-group">
+        {% include "carrental/reservation_frame.html" with reservation=reservation %}
 {% endif %}
 {% endif %}
 {% endfor %}
-  </div>
-  <div><h2>PAST RESERVATIONS: </h2></div>
-  <div class="row">
-    {% for reservation in reservations %}
-  {% if request.user == reservation.user %}
-  {% if reservation.is_active == False %}
-  <div class="col-md-4">
-    <div class="card-group">
-      {% include "carrental/reservation_frame.html" with reservation=reservation %}
-    </div>
-  </div>
-  {% endif %}
-  {% endif %}
-  {% endfor %}
-  </div>
 {% endblock %}
+  </div>
+  </div>
+  </div>
+  </div>
+</div>
+</div>
