@@ -7,10 +7,15 @@
 {% block head_title %}{% trans "Account" %}{% endblock %}
 
 {% block inner %}
-<h1>{% trans "E-mail Addresses" %}</h1>
+<h1 style="color: white">{% trans "E-mail Addresses" %}</h1>
+  <p style="color: white">{% trans 'The following e-mail addresses are associated with your account:' %}</p>
 
 {% if user.emailaddress_set.all %}
-<p>{% trans 'The following e-mail addresses are associated with your account:' %}</p>
+  <div class="card bg-light mb-3" style="max-width: 50rem;">
+
+
+
+  <div class="card-body">
 
 <form action="{% url 'account_email' %}" class="email_list" method="post">
 {% csrf_token %}
