@@ -1,24 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="card">
+<div class="card text-white bg-secondary mb-3 text-center">
   <div class="card-body">
-    <h5 class="card-title">{{ cars.title }}</h5>
+    <h2 class="card-title">{{ cars.title }}</h2>
     <p class="card-text">Mark: {{ cars.mark }}</p>
     <p class="card-text">Power: {{ cars.power }} HP</p>
     <p class="card-text">Type: {{ cars.type }}</p>
-    <h4 class="card-text text-right text-danger" >Price: {{ cars.price }}$ /per day</h4>
+    <h4 class="card-text text-right text-warning" >Price: {{ cars.price }}$ /per day</h4>
   </div>
   <img class="card-img-bottom" src="{{cars.picture}}" alt="Card image cap">
-</div>
 {% if request.user.is_superuser %}
   <div class="text-center">
-  <a href="{% url 'cars:update' slug=cars.slug %}" class="btn btn-outline-secondary btn-lg btn-block">
+  <a href="{% url 'cars:update' slug=cars.slug %}" class="btn btn-success btn-lg btn-block">
     <i class="fa fa-edit"></i>Edit
   </a>
-  <a href="{% url 'cars:delete' slug=cars.slug %}" class="btn btn-outline-danger btn-lg btn-block">
+  <a href="{% url 'cars:delete' slug=cars.slug %}" class="btn btn-danger btn-lg btn-block">
     <i class="fa fa-edit"></i>Delete
   </a>
   </div>
-{% endif %}
+  {% endif %}
+</div>
+
+</div>
+
 {% endblock %}

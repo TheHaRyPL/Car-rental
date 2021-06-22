@@ -14,9 +14,9 @@
             Reservation: {{ rental.reservation }}</br>
 
             {% if rental.is_returned %}
-            <p style="color: green">Returned: {{ rental.is_returned }}</p>
+            <p style="color: greenyellow">Returned: {{ rental.is_returned }}</p>
             {% else %}
-            <p style="color: red">Returned: {{ rental.is_returned }}</p>
+            <p style="color: orangered">Returned: {{ rental.is_returned }}</p>
             {% endif %}
           </li>
           </br>
