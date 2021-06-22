@@ -1,0 +1,40 @@
+<div class="card mb-4 box-shadow bg-light">
+{#{% if reservation.cars.picture %}#}
+{#  <img#}
+{#    class="card-img-top"#}
+{#    src="{{ reservation.cars.picture }}"#}
+{#    alt="Thumbnail [100%x225]"#}
+{#    style="height: 350px; width: 100%; display: block;">#}
+{#{% else %}#}
+{#  <img class=""#}
+{#       src="https://i.pinimg.com/originals/e9/be/52/e9be525135407719e43fd20ac520fe55.jpg"#}
+{#       alt="Stock thumbnail"#}
+{#       style="height: 400px; width: 100%; display: block;">#}
+{#{% endif %}#}
+  <div class="card-body">
+    {% if reservation.cars.picture %}
+  <img
+    class="card-img-top"
+    src="{{ reservation.cars.picture }}"
+    alt="Thumbnail [100%x225]"
+    style="height: 200px; width: 100%; display: block;">
+{% else %}
+  <img class=""
+       src="https://i.pinimg.com/originals/e9/be/52/e9be525135407719e43fd20ac520fe55.jpg"
+       alt="Stock thumbnail"
+       style="height: 400px; width: 100%; display: block;">
+{% endif %}
+  </div>
+<div class="card-body text-center">
+    <h4 class="card-title">{{ reservation.cars }} </h4>
+    <h5><b>User: </b> {{ reservation.user }}</h5>
+    <h5><b>Start: </b> {{ reservation.start_time_booking }}</h5>
+    <h5><b>End: </b> {{ reservation.end_time_booking }}</h5>
+    Active:
+      {% if reservation.is_active %}
+    <h5 style="color:green"> {{ reservation.is_active }}</h5>
+    {% else %}
+    <h5 style="color:red"> {{ reservation.is_active }}</h5>
+    {% endif %}
+</div>
+</div>
