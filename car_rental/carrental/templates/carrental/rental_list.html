@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card text-white bg-secondary mb-3 text-center" style="max-width: 150rem; margin-top: 70px;">
+  <div class="card-header">   <a href="{% url 'cars:create_rental' %}" class="btn btn-danger btn-lg btn-block"> <i class = "fa fa-edit"></i>Rent</a></div>
+  <div class="card-body">
+    <h5 class="card-title">List of all rentals:</h5>
+    {% for rental in rentals %}
+        <ul class="" style="font-size: x-large">
+          <li>
+            <h3 class="font-weight-light"> Rental no {{rental.pk }}:</h3>
+            Start: {{ rental.start_time_rent }},
+            End: {{ rental.end_time_rent }}</br>
+            Reservation: {{ rental.reservation }}</br>
+
+            {% if rental.is_returned %}
+            <p style="color: green">Returned: {{ rental.is_returned }}</p>
+            {% else %}
+            <p style="color: red">Returned: {{ rental.is_returned }}</p>
+            {% endif %}
+          </li>
+          </br>
+        </ul>
+        {% endfor %}
+      </div>
+  </div>
+</div>
+{% endblock %}

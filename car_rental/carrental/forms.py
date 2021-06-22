@@ -3,7 +3,7 @@ import wtforms
 import wtforms.widgets
 from cfgv import ValidationError
 from django.forms import ModelForm, HiddenInput
-from carrental.models import Cars, Reservation
+from carrental.models import Cars, Reservation, Rental
 from car_rental.users.models import User
 
 class CarsForm(ModelForm):
@@ -25,3 +25,15 @@ class ReservationForm(ModelForm):
     class Meta:
         model = Reservation
         fields = ['cars', 'user']
+
+class RentalForm(ModelForm):
+    """Rental model form"""
+    def __init__(self, *args, **kwargs):
+
+        super(RentalForm, self).__init__(*args, **kwargs)
+        self.fields['return_helper'].widget = HiddenInput()
+        self.fields['reservation'].queryset = Reservation.objects.filter(isrented=False)
+
+    class Meta:
+        model = Rental
+        fields = ['reservation', 'return_helper', 'isreturned']

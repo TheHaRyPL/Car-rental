@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card text-white bg-secondary mb-3 text-center" style="max-width: 150rem; margin-top: 50px;margin-left: 100px">
+  <div class="card-header">Rental Form</div>
+  <div class="card-body">
+    <form method="post" enctype="multipart/form-data">{% csrf_token %}
+    {{ form.as_p }}
+  <input type="submit" class="btn btn-info" value="Rent" style="font-size: large">
+</form>
+  </div>
+</div>
+{% endblock %}

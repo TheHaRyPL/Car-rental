@@ -1,13 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div>
-{% if request.user.is_superuser %}
+  <div class="card text-white bg-secondary mb-3" style="max-width: 100rem;">
+  <div class="card-header">
+    {% if request.user.is_superuser %}
   <a href="{% url 'cars:create' %}"
-  class="btn btn-outline-danger btn-lg btn-block">
+  class="btn btn-danger btn-lg btn-block">
     <i class = "fa fa-edit"></i>Create
   </a>
-{% endif %}
+{% endif %}</div>
+  <div class="card-body text-dark">
   <div class="row">
   {% for car in cars %}
   <div>
@@ -16,4 +18,7 @@
   {% endfor %}
   </div>
 </div>
+  </div>
+</div>
+
 {% endblock %}

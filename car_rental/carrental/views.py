@@ -3,8 +3,8 @@ from django.views.generic import DetailView
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
-from carrental.models import Cars, Reservation
-from carrental.forms import CarsForm, ReservationForm
+from carrental.models import Cars, Reservation, Rental
+from carrental.forms import CarsForm, ReservationForm, RentalForm
 
 
 class CarsListView(ListView):
@@ -48,3 +48,13 @@ class ReservationCreateView(CreateView):
         kwargs = super(ReservationCreateView, self).get_form_kwargs()
         kwargs['request'] = self.request
         return kwargs
+
+class RentalListView(ListView):
+    model = Rental
+
+    context_object_name = "rentals"
+
+
+class RentalCreateView(CreateView):
+    model = Rental
+    form_class = RentalForm

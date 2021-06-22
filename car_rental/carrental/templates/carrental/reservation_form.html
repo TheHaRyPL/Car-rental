@@ -1,9 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h4 class="text-center">Please select the movie,<br> than confirm your choice. </h4></br>
+  <div class="card text-white bg-secondary mb-3 text-center" style="max-width: 650px; margin-top: 100px; margin-left: 250px">
+  <div class="card-header">Select car, than confirm your choice</div>
+  <div class="card-body">
   <form method="post" enctype="multipart/form-data" class="text-center">{% csrf_token %}
   {{ form.as_p }}
   <input type="submit" class="btn btn-warning" value="Make a reservation">
   </form>
+  </div>
+</div>
+
+
 {% endblock %}

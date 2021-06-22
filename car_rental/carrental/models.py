@@ -88,3 +88,42 @@ class Reservation(models.Model):
 
     def __str__(self):
         return self.cars.title + ": " + self.user.username
+
+class Rental(models.Model):
+    """Rental model class"""
+    start_time_rent = models.DateField(editable=False)
+    end_time_rent = models.DateField(editable=False, blank=False, null=False)
+    reservation = models.ForeignKey(Reservation, on_delete=models.CASCADE, blank=False)
+    isreturned = models.BooleanField(default=False, blank=False)
+    return_helper = models.BooleanField(default=False, blank=False)
+
+    @property
+    def is_returned(self):
+        """Property to check if the rented.
+        Returns:
+            bool.
+        """
+        if self.isreturned is True and self.return_helper is False:
+            self.reservation.cars.quantity += 1
+            self.return_helper = True
+            self.save()
+            self.reservation.cars.save()
+            return self.isreturned
+        else:
+            return self.isreturned
+
+    def save(self, *args, **kwargs):
+        """ Custom save method for Rental object """
+        if not self.pk:
+            self.start_time_rent = datetime.date.today()
+            self.end_time_rent = self.start_time_rent + datetime.timedelta(days=7)
+            self.reservation.isrented = True
+            self.reservation.save()
+        return super(Rental, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        """Get url for Rental's list view."""
+        return reverse("cars:rental_list")
+
+    def __str__(self):
+        return self.reservation.cars.title + ": " + self.reservation.user.username

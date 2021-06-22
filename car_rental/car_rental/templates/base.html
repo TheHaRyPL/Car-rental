@@ -63,6 +63,11 @@
                 <a class="nav-link" href="{% url 'cars:create_reservation' %}" style="color: goldenrod">Reserve</a>
               {% endif %}
             </li>
+            <li>
+              {% if request.user.is_superuser %}
+                <a class="nav-link" href="{% url 'cars:rental_list' %}" style="color: orangered">Rental</a>
+              {% endif %}
+            </li>
           </ul>
         </div>
         <div>
@@ -114,3 +119,11 @@
     {% endblock inline_javascript %}
   </body>
 </html>
+
+<style>
+ body {
+  background-image: url("https://www.supercars.net/blog/wp-content/uploads/2020/09/wallpaperflare.com_wallpaper-1-1.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+</style>
